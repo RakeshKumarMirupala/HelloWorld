@@ -1,0 +1,112 @@
+#!/bin/bash
+
+JIL_File=/opt/ofbatch/mm88874_data/123.$$
+JIL_OUT=/opt/ofbatch/mm88874_data/Out_JIL_OUT1.$$
+
+# Declare an associative array to keep track of created insert jobs
+declare -A created_jobs
+
+cat /home/rm58086/JIL/File_Send_list | while read AAA XXX YYY
+do
+  sed -n "/---- $AAA ----/,/----/p" /opt/ofbatch/vs39479/JIL_PA3_OCT14 | sed '1,3d' | sed '$d' > $JIL_File
+
+  CCCC=`grep box_name $JIL_File`
+  CCC=`echo "$CCCC" | awk '{print $2}'`
+
+  RGN=`echo "$AAA" | awk -F'_' '{print $2}'`
+
+  sed -i 's/V752_PROD/V752_PRODN3/g' $JIL_File
+
+  HHHH=`grep " condition" $JIL_File`
+  HHHS=`echo $HHHH | awk -F':' '{print $2}'`
+
+  echo " /* ----------------- ${AAA} ----------------- */
+  /* old condition:$HHHS  */
+  update_job: $AAA
+  condition: s(${AAA}_N1TON3) &$HHHS
+  " >> ${JIL_OUT}
+
+  echo " /* ----------------- ${AAA}_N1TON3 ----------------- */
+
+  insert_job: ${AAA}_N1TON3    job_type: cmd
+  description: Send Files from ProdN1 to ProdN3
+  machine: V752_PROD
+  condition:$HHHS
+  owner: ofbatch
+  box_name: $CCC
+  alarm_if_fail: y
+  alarm_if_terminated: y
+  max_run_alarm: 10
+  profile: /opt/oasysfin/OasysFinProfile
+  send_notification: n
+  std_out_file: ASLOG
+  std_err_file: ASLOG
+  command: OB_MISC_SHARE/run_InternalFileTransfer $RGN NDM N1TON3 TERMSUCCESS Y $YYY
+  status: ON_NOEXEC
+  " >> ${JIL_OUT}
+
+  #####################################################################
+  # Process job AAA for PRD3
+  sed -n "/---- $AAA ----/,/----/p" /opt/ofbatch/vs39479/JIL_PA3_OCT14 | sed '1,3d' | sed '$d' > $JIL_File
+  sed -i 's/V752_PROD/V752_PRODN3/g' $JIL_File
+
+  # Check if the insert job already exists
+  if [[ -z "${created_jobs[${AAA}_PRD3]}" ]]; then
+    echo " /* ----------------- ${AAA}_PRD3 ----------------- */
+
+    insert_job: ${AAA}_PRD3   job_type: CMD
+    `cat $JIL_File`
+    " >> $JIL_OUT.1
+
+    grep -v " condition" $JIL_OUT.1 > $JIL_OUT.2
+    echo "
+    `cat $JIL_OUT.2`
+    condition: s(${AAA}_N1TON3) &$HHHS
+    status: ON_NOEXEC
+    "  >> ${JIL_OUT}
+
+    # Mark job as created
+    created_jobs[${AAA}_PRD3]=1
+
+    rm $JIL_OUT.1
+  fi
+
+  ####################################################################
+  # Process job XXX
+  sed -n "/---- $XXX ----/,/----/p" /opt/ofbatch/vs39479/JIL_PA3_OCT14 | sed '1,3d' | sed '$d' > $JIL_File
+  sed -i 's/V752_PROD/V752_PRODN3/g' $JIL_File
+
+  if [[ -z "${created_jobs[${XXX}_PRD3]}" ]]; then
+    echo " /* ----------------- ${XXX}_PRD3 ----------------- */
+
+    insert_job: ${XXX}_PRD3   job_type: CMD
+    `cat $JIL_File`
+    status: ON_NOEXEC
+    " >> $JIL_OUT.1
+
+    AAA1="("$AAA
+    AAA2=${AAA1}")"
+    sed -i "s/$AAA2/${AAA1}_PRD3)/g" $JIL_OUT.1
+
+    echo "
+    `cat $JIL_OUT.1`
+    "  >> ${JIL_OUT}
+
+    # Mark job as created
+    created_jobs[${XXX}_PRD3]=1
+
+    rm $JIL_OUT.1
+  fi
+
+  rm $JIL_File
+  echo " ------------------------------------------------" >> ${JIL_OUT}
+
+done
+
+sed -i 's/file: ASLOG/file: $ASLOG/g' $JIL_OUT
+sed -i 's/command: OB_MISC_SHARE/command: $OB_MISC_SHARE/g' $JIL_OUT
+
+cat $JIL_OUT
+rm $JIL_OUT.2
+
+exit 0
