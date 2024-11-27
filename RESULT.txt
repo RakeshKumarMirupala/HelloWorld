@@ -1,12 +1,17 @@
-Hi Sung,
+Here’s a concise message for your group chat:
 
-we have prepared the required JIL files for the upcoming release(Dec 7th).
+---
 
-Please find the attached JIL files for the following:
+**Hi Team,**  
 
-752_L_Citi_RUCiti9_NDM_TR
-752_N_FFS_TrdRef_%Send% (8 Jobs) 
+As discussed, we need to prepare an Excel sheet to track all SFTP connection testing and NDM testing tasks completed by our team since January. Since this requires accurate details, each team member should update the sheet with tasks they have personally handled.  
 
-We request you to review the attached JIL files and provide feedback or approval for the changes. If any updates or corrections are needed, please let us know at the earliest so we can incorporate them before the release.
+You can refer to your sent items in Outlook to fill in the required fields. This will ensure that the data is correct and comprehensive. Once everyone updates their entries, we’ll consolidate the information.  
 
-Looking forward to your confirmation.
+Please complete this at the earliest.  
+
+Thanks!  
+
+--- 
+
+Let me know if you’d like to add anything.
