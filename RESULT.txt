@@ -1,17 +1,29 @@
-Here’s a concise message for your group chat:
 
----
+Below is the order of jobs based on their start time:
 
-**Hi Team,**  
-
-As discussed, we need to prepare an Excel sheet to track all SFTP connection testing and NDM testing tasks completed by our team since January. Since this requires accurate details, each team member should update the sheet with tasks they have personally handled.  
-
-You can refer to your sent items in Outlook to fill in the required fields. This will ensure that the data is correct and comprehensive. Once everyone updates their entries, we’ll consolidate the information.  
-
-Please complete this at the earliest.  
-
-Thanks!  
-
---- 
-
-Let me know if you’d like to add anything.
+Job Execution Order (Sorted by Start Time)
+752_N_FFS_TrdRef_PP (3:50:09 AM)
+752_N_FFS_TrdRef_PP_Send_TY_N1TON3 (3:50:13 AM)
+752_N_FFS_TrdRef_CP_Send_TY_N1TON3 (3:50:18 AM)
+752_N_FFS_TrdRef_PP_Send_LN_N1TON3 (3:50:18 AM)
+752_N_FFS_TrdRef_PP_Send_FX_N1TON3 (3:50:19 AM)
+752_N_FFS_TrdRef_CP_Send_LN_N1TON3 (3:50:22 AM)
+752_N_FFS_TrdRef_CP_Send_FX_N1TON3 (3:50:22 AM)
+752_N_FFS_TrdRef_PP_Send_NY (3:50:22 AM)
+752_N_FFS_TrdRef_PP_Send_NY_N1TON3 (3:50:26 AM)
+752_N_FFS_TrdRef_PP_Send_NY_PRD3 (3:50:27 AM)
+752_N_FFS_TrdRef_PP_Send_TY_PRD3 (3:50:29 AM)
+752_N_FFS_TrdRef_PP_Send_LN_PRD3 (3:50:33 AM)
+752_N_FFS_TrdRef_PP_Send_FX_PRD3 (3:50:34 AM)
+752_N_FFS_TrdRef_PP_Send_TY (3:50:43 AM)
+752_N_FFS_TrdRef_PP_Send_LN (3:51:04 AM)
+752_N_FFS_TrdRef_PP_Send_FX (3:51:28 AM)
+752_N_FFS_TrdRef_CP_Send_TY_PRD3 (3:52:37 AM)
+752_N_FFS_TrdRef_CP_Send_LN_PRD3 (3:52:37 AM)
+752_N_FFS_TrdRef_CP_Send_NY (3:52:36 AM)
+752_N_FFS_TrdRef_CP_Send_NY_PRD3 (3:52:36 AM)
+752_N_FFS_TrdRef_CP_Send_FX (3:54:26 AM)
+752_N_FFS_TrdRef_CP_Send_LN (3:53:48 AM)
+752_N_FFS_TrdRef_CP_Send_TY (3:53:14 AM)
+752_N_FFS_TrdRef_CP (3:50:25 AM)
+752_N_FFS_TrdRef_CP_Send_FX (3:54:26 AM)
