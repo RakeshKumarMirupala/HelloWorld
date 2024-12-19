@@ -1,29 +1,47 @@
+/* ----------------- 752_N_FFS_TrdRef_PP_Send_NY_N1TON3 ----------------- */
 
-Below is the order of jobs based on their start time:
+update_job: 752_N_FFS_TrdRef_PP_Send_NY_N1TON3    job_type: cmd
+/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.N.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
+command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/$OF_DATE_BATCH/TrdRef.N.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
 
-Job Execution Order (Sorted by Start Time)
-752_N_FFS_TrdRef_PP (3:50:09 AM)
-752_N_FFS_TrdRef_PP_Send_TY_N1TON3 (3:50:13 AM)
-752_N_FFS_TrdRef_CP_Send_TY_N1TON3 (3:50:18 AM)
-752_N_FFS_TrdRef_PP_Send_LN_N1TON3 (3:50:18 AM)
-752_N_FFS_TrdRef_PP_Send_FX_N1TON3 (3:50:19 AM)
-752_N_FFS_TrdRef_CP_Send_LN_N1TON3 (3:50:22 AM)
-752_N_FFS_TrdRef_CP_Send_FX_N1TON3 (3:50:22 AM)
-752_N_FFS_TrdRef_PP_Send_NY (3:50:22 AM)
-752_N_FFS_TrdRef_PP_Send_NY_N1TON3 (3:50:26 AM)
-752_N_FFS_TrdRef_PP_Send_NY_PRD3 (3:50:27 AM)
-752_N_FFS_TrdRef_PP_Send_TY_PRD3 (3:50:29 AM)
-752_N_FFS_TrdRef_PP_Send_LN_PRD3 (3:50:33 AM)
-752_N_FFS_TrdRef_PP_Send_FX_PRD3 (3:50:34 AM)
-752_N_FFS_TrdRef_PP_Send_TY (3:50:43 AM)
-752_N_FFS_TrdRef_PP_Send_LN (3:51:04 AM)
-752_N_FFS_TrdRef_PP_Send_FX (3:51:28 AM)
-752_N_FFS_TrdRef_CP_Send_TY_PRD3 (3:52:37 AM)
-752_N_FFS_TrdRef_CP_Send_LN_PRD3 (3:52:37 AM)
-752_N_FFS_TrdRef_CP_Send_NY (3:52:36 AM)
-752_N_FFS_TrdRef_CP_Send_NY_PRD3 (3:52:36 AM)
-752_N_FFS_TrdRef_CP_Send_FX (3:54:26 AM)
-752_N_FFS_TrdRef_CP_Send_LN (3:53:48 AM)
-752_N_FFS_TrdRef_CP_Send_TY (3:53:14 AM)
-752_N_FFS_TrdRef_CP (3:50:25 AM)
-752_N_FFS_TrdRef_CP_Send_FX (3:54:26 AM)
+/* ----------------- 752_N_FFS_TrdRef_PP_Send_TY_N1TON3 ----------------- */
+
+update_job: 752_N_FFS_TrdRef_PP_Send_TY_N1TON3    job_type: cmd
+/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.T.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
+command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/T_ofdata/$OF_DATE_BATCH/TrdRef.T.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
+
+/* ----------------- 752_N_FFS_TrdRef_PP_Send_LN_N1TON3 ----------------- */
+
+update_job: 752_N_FFS_TrdRef_PP_Send_LN_N1TON3    job_type: cmd
+/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.L.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
+command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/L_ofdata/$OF_DATE_BATCH/TrdRef.L.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
+
+/* ----------------- 752_N_FFS_TrdRef_PP_Send_FX_N1TON3 ----------------- */
+
+update_job: 752_N_FFS_TrdRef_PP_Send_FX_N1TON3    job_type: cmd
+/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.F.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
+command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/F_ofdata/$OF_DATE_BATCH/TrdRef.F.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
+
+/* ----------------- 752_N_FFS_TrdRef_CP_Send_NY_N1TON3 ----------------- */
+
+update_job: 752_N_FFS_TrdRef_CP_Send_NY_N1TON3    job_type: cmd
+/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.N.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
+command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/$OF_DATE_BATCH/TrdRef.N.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
+
+/* ----------------- 752_N_FFS_TrdRef_CP_Send_TY_N1TON3 ----------------- */
+
+update_job: 752_N_FFS_TrdRef_CP_Send_TY_N1TON3    job_type: cmd
+/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.T.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
+command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/T_ofdata/$OF_DATE_BATCH/TrdRef.T.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
+
+/* ----------------- 752_N_FFS_TrdRef_CP_Send_LN_N1TON3 ----------------- */
+
+update_job: 752_N_FFS_TrdRef_CP_Send_LN_N1TON3    job_type: cmd
+/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.L.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
+command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/L_ofdata/$OF_DATE_BATCH/TrdRef.L.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
+
+/* ----------------- 752_N_FFS_TrdRef_CP_Send_FX_N1TON3 ----------------- */
+
+update_job: 752_N_FFS_TrdRef_CP_Send_FX_N1TON3    job_type: cmd
+/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.F.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
+command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/F_ofdata/$OF_DATE_BATCH/TrdRef.F.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
