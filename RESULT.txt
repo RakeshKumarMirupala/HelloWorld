@@ -1,47 +1,28 @@
-/* ----------------- 752_N_FFS_TrdRef_PP_Send_NY_N1TON3 ----------------- */
+Here’s a concise draft for your email:
 
-update_job: 752_N_FFS_TrdRef_PP_Send_NY_N1TON3    job_type: cmd
-/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.N.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
-command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/$OF_DATE_BATCH/TrdRef.N.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
+---
 
-/* ----------------- 752_N_FFS_TrdRef_PP_Send_TY_N1TON3 ----------------- */
+**Subject:** Clarification on Additional Script Found During Deployment  
 
-update_job: 752_N_FFS_TrdRef_PP_Send_TY_N1TON3    job_type: cmd
-/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.T.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
-command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/T_ofdata/$OF_DATE_BATCH/TrdRef.T.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
+Dear Team,  
 
-/* ----------------- 752_N_FFS_TrdRef_PP_Send_LN_N1TON3 ----------------- */
+During the deployment of the `obBRCsms` package for the `20250106` release on the DEV server, I noticed a discrepancy between the scripts listed in the release wikipage and the actual deployment.  
 
-update_job: 752_N_FFS_TrdRef_PP_Send_LN_N1TON3    job_type: cmd
-/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.L.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
-command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/L_ofdata/$OF_DATE_BATCH/TrdRef.L.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
+According to the wikipage, the following scripts were expected:  
+- `func_CitiBR`  
+- `shrun_CitiBRCosmosGLFeed.sh`  
+- `shrun_CitiBRLDWFeed.sh`  
+- `run_CitiBRCollFeed.sh`  
+- `run_UpdateDBStatistics.sh`  
 
-/* ----------------- 752_N_FFS_TrdRef_PP_Send_FX_N1TON3 ----------------- */
+However, after taking changes from the `develop` branch and deploying, an additional script, `run_CitiBRCosmosGLFeedBlocked`, was found, which is not mentioned in the wikipage. Below is the diff output for reference:  
 
-update_job: 752_N_FFS_TrdRef_PP_Send_FX_N1TON3    job_type: cmd
-/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.F.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
-command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/F_ofdata/$OF_DATE_BATCH/TrdRef.F.PP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
+```  
+bash-4.2$ diff -qr 43.38.D0 43.38.C0  
+Files 43.38.D0/share/run_CitiBRCosmosGLFeedBlocked and 43.38.C0/share/run_CitiBRCosmosGLFeedBlocked differ  
+```  
 
-/* ----------------- 752_N_FFS_TrdRef_CP_Send_NY_N1TON3 ----------------- */
+Could you please confirm if this script is intended for this release? If yes, it would be helpful to update the wikipage accordingly.  
 
-update_job: 752_N_FFS_TrdRef_CP_Send_NY_N1TON3    job_type: cmd
-/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.N.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
-command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/$OF_DATE_BATCH/TrdRef.N.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
-
-/* ----------------- 752_N_FFS_TrdRef_CP_Send_TY_N1TON3 ----------------- */
-
-update_job: 752_N_FFS_TrdRef_CP_Send_TY_N1TON3    job_type: cmd
-/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.T.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
-command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/T_ofdata/$OF_DATE_BATCH/TrdRef.T.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
-
-/* ----------------- 752_N_FFS_TrdRef_CP_Send_LN_N1TON3 ----------------- */
-
-update_job: 752_N_FFS_TrdRef_CP_Send_LN_N1TON3    job_type: cmd
-/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.L.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
-command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/L_ofdata/$OF_DATE_BATCH/TrdRef.L.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
-
-/* ----------------- 752_N_FFS_TrdRef_CP_Send_FX_N1TON3 ----------------- */
-
-update_job: 752_N_FFS_TrdRef_CP_Send_FX_N1TON3    job_type: cmd
-/** old command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/N_ofdata/TrdRef.F.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y **/
-command: $OB_MISC_SHARE/run_InternalFileTransfer N '/opt/ofbatch/F_ofdata/$OF_DATE_BATCH/TrdRef.F.CP.$OF_DATE_BATCH.dat.gz' N1TON3 TERMSUCCESS Y
+Thanks,  
+Rakesh
