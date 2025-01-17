@@ -1,0 +1,511 @@
+Delivered-To: rakeshmirchi2016@gmail.com
+Received: by 2002:a17:504:5410:b0:1c70:646a:c3df with SMTP id d16csp4132515njk;
+        Fri, 17 Jan 2025 01:32:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHNZuHrnMEvKtl2LxeQ5z+Ae5qHZgN+lp+P8A3wxNrYn1/XQG0A96LH16Uaby0tkXoyLsvk
+X-Received: by 2002:a05:622a:1496:b0:467:6375:6884 with SMTP id d75a77b69052e-46e12bb3e97mr25808831cf.48.1737106354331;
+        Fri, 17 Jan 2025 01:32:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737106354; cv=none;
+        d=google.com; s=arc-20240605;
+        b=esOoGTgLTekKSe7TbMl2hLYq9Kxns6x21WNmF/+l0tJePSJuCcFs/lyahgeK/gQExp
+         zbajIeXQ/0QalJ6DjBOgcb5TLPZi4YHWNBKD6hCbRnT2vL5BdFQ/bYj72ANFyOmzVZ5I
+         1dDPavUByHaPbGlrZXstmXVvsq0n4nOTlLuNW1CHNpe60MF/QI0mkRaQLKc/8dMhqAp1
+         4O6dFVcWkDeYcu4ojIYJKhK4WK8yKipjyKES0rCIlkk8iH9lUB3Jq1H+mqaCbbu80LLB
+         pkDsiHQ4Ldo0609c/L77G1M2gLOHU9fNSMCfYVw08NF+O9iYDaEZgCYbcAMPfuwshnDH
+         vocw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:mime-version:from:date
+         :content-transfer-encoding:dkim-signature;
+        bh=GRNOQS+2NCiTN2WFPg+hK+GG3WAPacr5QnBXU+wPTZQ=;
+        fh=ciV7HBeOiWM2tfcVRwzB5boDU7H8fHDx6zlL0/PMoPI=;
+        b=VvHWEKDXzh6STgoCqrZ+A8A6BeL9xb0qEShkicGcs28HS0X1Uv7n0zMoCKM0Tzxw4S
+         hIoLLYxoDUehv/CXDGnyd2hdGrPZBfX+hlgWsK6YdgKZ5hYNrVrCEO9Glp6xdmB7WCsw
+         9XdeAviCmlmsb7U91bY9bMfFBqB+DQPzplL39TlHILYu0U1aBk7NPCG7c17yGt1n5Lon
+         Ebzh0EIdfftJKyt96oDuwiLdpOof+KYp2jUwLmS7f8+cUF5HZhXTMY9O5pln7Zx3b4oP
+         ruapIZ/Y5H8ZTcS2tK3QVj+S5yGxH+bACg+Hm93PmTuY+p0+8tc4aN/7Qj8F99zeNKWo
+         uwEg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@sendgrid.net header.s=smtpapi header.b=sjlgXU3I;
+       spf=pass (google.com: domain of bounces+11328361-7d30-rakeshmirchi2016=gmail.com@sendgrid.net designates 168.245.53.141 as permitted sender) smtp.mailfrom="bounces+11328361-7d30-rakeshmirchi2016=gmail.com@sendgrid.net";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=risebird.io
+Return-Path: <bounces+11328361-7d30-rakeshmirchi2016=gmail.com@sendgrid.net>
+Received: from xvfrprvd.outbound-mail.sendgrid.net (xvfrprvd.outbound-mail.sendgrid.net. [168.245.53.141])
+        by mx.google.com with ESMTPS id d75a77b69052e-46e1049dd89si19110511cf.582.2025.01.17.01.32.34
+        for <rakeshmirchi2016@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 17 Jan 2025 01:32:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+11328361-7d30-rakeshmirchi2016=gmail.com@sendgrid.net designates 168.245.53.141 as permitted sender) client-ip=168.245.53.141;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@sendgrid.net header.s=smtpapi header.b=sjlgXU3I;
+       spf=pass (google.com: domain of bounces+11328361-7d30-rakeshmirchi2016=gmail.com@sendgrid.net designates 168.245.53.141 as permitted sender) smtp.mailfrom="bounces+11328361-7d30-rakeshmirchi2016=gmail.com@sendgrid.net";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=risebird.io
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.net;
+	h=content-transfer-encoding:content-type:from:mime-version:subject:
+	x-feedback-id:to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=GRNOQS+2NCiTN2WFPg+hK+GG3WAPacr5QnBXU+wPTZQ=;
+	b=sjlgXU3IpLQefCJ4u6bRekFD8BmObK3cYejGO59vRLaPIMcp3M9NKq7Knz1RCM78+qfg
+	3iOuZZsyeY6JqE2hq0k1HgcluLIPnJ95fZRf7UlYn6Rhs/zYN3GAhojYU5gnPUpK6Acv9P
+	8Kb/rprN9YKdHjlrRjSBqs7qwgM+wyfx0=
+Received: by recvd-858478d86-7m7zl with SMTP id recvd-858478d86-7m7zl-1-678A23B1-AD
+	2025-01-17 09:32:33.718976623 +0000 UTC m=+5487011.602634290
+Received: from MTEzMjgzNjE (unknown)
+	by geopod-ismtpd-5 (SG) with HTTP
+	id SUGZl65WRzq8Mt4dl7NK1g
+	Fri, 17 Jan 2025 09:32:33.646 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=iso-8859-1
+Date: Fri, 17 Jan 2025 09:32:33 +0000 (UTC)
+From: Risebird Notification <notification@risebird.io>
+Mime-Version: 1.0
+Message-ID: <SUGZl65WRzq8Mt4dl7NK1g@geopod-ismtpd-5>
+Subject: Apexon: For Skill :Senior Engineer Java (AN): Interview Reminder
+ Confirm Your Availability
+X-Feedback-ID: 11328361:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2EUlNk8kncbZK6lrX72T4uBWKCulr9ZoFQyp0ydfDt0N+mafRu9DkwOJocB?=
+ =?us-ascii?Q?WRjxX+5Ud1PLvdulg8rGK5jrBfMAgqvf4xghjl8?=
+ =?us-ascii?Q?TYVma=2FySJY8tIfFMk5W3gkXRG44owf+anX=2Ffuex?=
+ =?us-ascii?Q?Avu1uBwkfqjgTmCklOH=2Fv7YpDlCx5eKLixL9Tzg?=
+ =?us-ascii?Q?OZKpka1SSZZqRVjHSI2skb=2FA4iDupRniHpQjXGV?=
+ =?us-ascii?Q?RU5M03AqBIKqRnrdVo6BOS7uzGpxrhq3=2FxjFrl5?=
+ =?us-ascii?Q?JTtWWg3l1dUWrmkezQx3zRxCOQ=3D=3D?=
+To: rakeshmirchi2016@gmail.com
+X-Entity-ID: u001.UwPQ7j+/V2gQbHkksb89KQ==
+
+<!DOCTYPE html>
+<html lang=3D"en">
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8=
+">
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1.0">
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge,chrome=3D1">
+    <meta name=3D"format-detection" content=3D"telephone=3Dno">
+    <!-- disable auto telephone linking in iOS-->
+    <title>Welcome to Risebird</title>
+    <style type=3D"text/css">
+        /* =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D Custom Font Import =3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D */
+        @import url(http://daks2k3a4ib2z.cloudfront.net/0globals/avenirnext=
+pro-webfont.css);
+    </style>
+</head>
+<body bgcolor=3D"#F0F1F3" leftmargin=3D"0" marginwidth=3D"0" topmargin=3D"0=
+" marginheight=3D"0" offset=3D"0">
+    <span style=3D"display:none!important;max-height:0;overflow:hidden;mso-=
+hide:all;"></span>
+    <center style=3D"background-color:#F0F1F3;">
+        <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" height=3D"1=
+00%" width=3D"100%" style=3D"table-layout: fixed; margin: auto; color: #7A7=
+A7A;font-weight: normal;max-width: 600px !important;min-width: 100% !import=
+ant;font-family: 'AvenirNextLTPro-Regular', 'Avenir Next', 'HelveticaNeue',=
+ 'Helvetica Neue', 'Avenir', Helvetica, Arial, Lucida Grande, sans-serif!im=
+portant; background-color: #F0F1F3; border-spacing: 0px; margin-top:20px;">
+            <tr>
+                <td align=3D"center" valign=3D"top" style=3D"margin: 0;
+      padding: 0;
+      width: 100% !important;
+      font-family: 'AvenirNextLTPro-Regular', 'Avenir Next', 'HelveticaNeue=
+', 'Helvetica Neue', 'Avenir', Helvetica, Arial, Lucida Grande, sans-serif!=
+important;">
+
+                    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"600" style=3D"border-spacing: 0px;">
+                        <!-- HEADER ROW //-->
+                        <tr>
+                            <td align=3D"center" valign=3D"top">
+                                <!-- CENTERING TABLE //-->
+                                <table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" width=3D"100%" style=3D"border-spacing: 0px;">
+                                    <tr>
+                                        <td width=3D"200" align=3D"center" =
+valign=3D"middle" style=3D"background: #003851;padding:20px;">
+                                            <div style=3D"background: #1d2a=
+30; width: 90px; height: 90px; border-radius: 200px; ">
+                                                <a style=3D"text-decoration=
+: none !important;" href=3D"https://u11328361.ct.sendgrid.net/ls/click?upn=
+=3Du001.oMbYVuE5RMQJZ1O6utZDLd5TwQNGnay3nKXWJWO-2BHX8-3Dt_B7_sCQxchh2gFb81i=
+H-2FHyeiLzgWgRE0U6OZjHjyeNkenpXFx5GTygeyvb9wCsTQuIKayajLg9YmxQg3CVosS0Dcm7B=
+c1Yha-2FIgGpljWuzH4jlW0yxQ6NQOtqAcK1c36-2F-2F7he-2BWVElUKf9l1MS-2BAwAtFBNN5=
+UdPXqFQbtniSJAPafDXZ0-2F16Gxi9yU6kDycFNSDUb6HunOVHOeJ46VzwDjb9JQ-3D-3D" tar=
+get=3D"_blank">
+                                                    <img width=3D"100" alt=
+=3D"Risebird Logo" src=3D"https://risebirdportal.blob.core.windows.net/logo=
+/risebirdlogo.ico" border=3D"0" />
+                                                </a>
+                                            </div>
+                                                <img width=3D"120" style=3D=
+"font-family: Helvetica, Arial, sans-serif; color: #666666; font-size: 16px=
+; display: inline-block !important;  border: 0; border-style: none;border-c=
+olor: #ffffff; outline: none; text-decoration: none;height: auto; line-heig=
+ht: 100%;" alt=3D"" src=3D"https://risebirdportal.blob.core.windows.net/cli=
+entlogos/OIP_(10).jpeg" border=3D"0" />
+                                        </td>
+                                        <td width=3D"400" style=3D"backgrou=
+nd-image: url(https://risebirdportal.blob.core.windows.net/header/email-ban=
+ner.png); width: 500px; height: 140px; background-size: cover; background-r=
+epeat: no-repeat; background-position: 100% 0px;padding:10px 40px; "><h1 st=
+yle=3D"font-family: Arial; letter-spacing: 0px; color: #FFFFFF; text-transf=
+orm: uppercase; opacity: 1; font-size:35px; font-weight: normal; "><span st=
+yle=3D" text-align: left; display:block; font-family:Arial; letter-spacing:=
+ 0px; color: #FF6115; text-transform: uppercase; opacity: 1; font-size: 42p=
+x;line-height:60px; font-weight: bold;">Reminder</span></h1></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"600" style=3D"border-spacing: 0px;border-radius: 5px; -webkit-bor=
+der-radius: 5px; -moz-border-radius: 5px;    background-color: #FFFFFF;
+      border-spacing: 0px;
+      border: 1px solid #E0E1E2;
+    border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px">
+                        <!-- MODULE ROW - BLACK BAR-->
+
+                        <tr>
+                            <td align=3D"center" valign=3D"top">
+                                <table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" width=3D"100%" style=3D"color:#6B7075; border-radius: 4px 4px =
+0 0">
+                                    <tr>
+                                        <td align=3D"center" valign=3D"top"=
+>
+                                            <table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"600">
+                                                <tr>
+                                                    <td align=3D"center" va=
+lign=3D"top" width=3D"600" style=3D"padding-top:0px;">
+                                                        <table border=3D"0"=
+ cellpadding=3D"30" cellspacing=3D"0" width=3D"100%">
+                                                            <tr>
+                                                                <td align=
+=3D"center" valign=3D"top" style=3D"color: #6B7075;
+      font-family: 'AvenirNextLTPro-Regular', 'Avenir Next', 'HelveticaNeue=
+', 'Helvetica Neue', 'Avenir', Helvetica;
+      font-size: 16px;padding-bottom:0px;
+      line-height: 100%;
+      text-align: left;">
+                                                                    <div st=
+yle=3D"text-align: left; font-family: Arial, Helvetica, sans-serif; color: =
+#003851; font-weight:bold;">Dear Rakesh Kumar Mirupala, </div>
+                                                                    <div st=
+yle=3D"text-align: center; font-family: Arial, Helvetica, sans-serif; font-=
+size: 15px; margin-bottom: 0;line-height: 145%; text-align: left">
+                                                                        <p =
+style=3D"margin-bottom:5px;line-height:28px;">This is to remind you that yo=
+ur interview is scheduled for <strong>1/18/2025 3:00:00 PM(Timezone: IST)</=
+strong>. Kindly confirm your availability by clicking on the appropriate re=
+sponse below.
+
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align=
+=3D"center" valign=3D"top" width=3D"600" style=3D"padding-top:0px;padding-b=
+ottom:10px;">
+                                                                    <h1 sty=
+le=3D"text-align: left;  font-size: 18px; font-weight: 500; color: #FF6115;=
+font-weight:600;"><img style=3D"padding-right:15px;" width=3D"20" alt=3D"De=
+tails" src=3D"https://risebirdportal.blob.core.windows.net/icon/list-icon.p=
+ng" />Details </h1>
+                                                                    <table =
+width=3D"100%" border=3D"0" cellspacing=3D"10" cellpadding=3D"10">
+                                                                        <tr=
+>
+                                                                           =
+ <td align=3D"left" valign=3D"top" width=3D"40%" style=3D"border: 1px solid=
+ #D9D9D9; font-size: 13px;padding-top:4px;padding-bottom:4px; line-height: =
+17px; text-transform: uppercase; font-weight: bold; color:#003851; ">
+                                                                           =
+     Client :
+                                                                           =
+ </td>
+                                                                           =
+ <td align=3D"left" valign=3D"top" width=3D"60%" style=3D"border: 1px solid=
+ #D9D9D9; font-size: 14px; padding-top: 4px; padding-bottom: 4px; line-heig=
+ht: 17px; font-family: Arial; ">
+                                                                           =
+     Apexon
+                                                                           =
+ </td>
+                                                                        </t=
+r>
+                                                                        <tr=
+>
+                                                                           =
+ <td align=3D"left" valign=3D"top" width=3D"40%" style=3D"border: 1px solid=
+ #D9D9D9; font-size: 13px; padding-top: 8px; padding-bottom: 8px; line-heig=
+ht: 17px; font-weight: bold; text-transform: uppercase; color: #003851;">
+                                                                           =
+     Job & Interview Details:
+                                                                           =
+ </td>
+                                                                           =
+ <td align=3D"left" valign=3D"top" width=3D"60%" style=3D"border: 1px solid=
+ #D9D9D9; font-size: 14px; padding-top: 8px; padding-bottom: 8px; line-heig=
+ht: 17px; font-family: Arial;">
+                                                                           =
+     <a style=3D" text-decoration: none; color: #fff; background: #ff6115; =
+font-size: 12px; padding: 5px 5px; border-radius: 3px; font-weight: normal;=
+" href=3D"https://u11328361.ct.sendgrid.net/ls/click?upn=3Du001.oMbYVuE5RMQ=
+JZ1O6utZDLZ9vNpk-2FoHFPgABrm8WK-2BzWCyFclUgqmOstOiy7KFAMGQe7deUDgcajXLnOQVC=
+XhFnJR1jZd4tB8bB2bFD4lDLXLkc-2B-2B5vn9asm6zDibcNiywDDJjQc5ZMDZ-2FfP1sa7qRA-=
+3D-3D0k_-_sCQxchh2gFb81iH-2FHyeiLzgWgRE0U6OZjHjyeNkenpXFx5GTygeyvb9wCsTQuIK=
+ayajLg9YmxQg3CVosS0Dcm6yOYKrXRXATS8hgFMJPLMFub5JEr6wpcfDdqAxpgzkX-2BhpMx8K-=
+2FOebfDdFqnSpRmQFvk1Wgo3ptagU9-2F70XxC-2FJEU35go4FAiedhaUGURqYv6rIfQFzyz9SJ=
+2dYg07W4A-3D-3D" target=3D"_blank">Click here</a>
+                                                                           =
+ </td>
+                                                                        </t=
+r>
+                                                                        <tr=
+>
+                                                                           =
+ <td align=3D"left" valign=3D"top" width=3D"40%" style=3D"border: 1px solid=
+ #D9D9D9; font-size: 13px; padding-top: 8px; padding-bottom: 8px; line-heig=
+ht: 17px; font-weight: bold; text-transform: uppercase; color: #003851; ">
+                                                                           =
+     Meeting Link :
+                                                                           =
+ </td>
+                                                                           =
+ <td align=3D"left" valign=3D"top" width=3D"60%" style=3D"border: 1px solid=
+ #D9D9D9; font-size: 14px; padding-top: 8px; padding-bottom: 8px; line-heig=
+ht: 17px; font-family: Arial;">
+                                                                           =
+     <a style=3D"text-decoration: none; color: #fff; background: #ff6115; f=
+ont-size: 12px; padding: 5px 5px; border-radius: 3px; font-weight: normal;"=
+ href=3D"https://u11328361.ct.sendgrid.net/ls/click?upn=3Du001.oMbYVuE5RMQJ=
+Z1O6utZDLZ9vNpk-2FoHFPgABrm8WK-2BzWCyFclUgqmOstOiy7KFAMGQe7deUDgcajXLnOQVCX=
+hFnJR1jZd4tB8bB2bFD4lDLXLkc-2B-2B5vn9asm6zDibcNiywDDJjQc5ZMDZ-2FfP1sa7qRA-3=
+D-3DRy7W_sCQxchh2gFb81iH-2FHyeiLzgWgRE0U6OZjHjyeNkenpXFx5GTygeyvb9wCsTQuIKa=
+yajLg9YmxQg3CVosS0Dcmy90DvbOG8JiS1xwmRnlS5adDBqC-2FoMQ85N2WUPJGFr1XAqWCdCXk=
+mFkXyFrY8wTUUV1EqjZGXzEn3y6P1jAEED96-2FqOKGRH8WPxWtBO4rIPYa6ly1VbcE4AfjNKSA=
+nd6Q-3D-3D" target=3D"_blank">Click here</a>
+                                                                           =
+ </td>
+                                                                        </t=
+r>
+                                                                  =20
+                                                                    </table=
+>
+
+                                                                 =20
+                                                                 =20
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align=
+=3D"center" valign=3D"top" width=3D"600" style=3D"padding-top:0px;padding-b=
+ottom:0px;">
+
+                                                                    <table =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                                                        <tr=
+>
+                                                                           =
+ <td  align=3D"center" valign=3D"top" style=3D"padding: 10px 0px 0px 0px;">
+                                                                           =
+     <a style=3D"text-decoration: none; border: 1px #11381136 solid; border=
+-bottom: 2px #0f5d0857 solid; text-align: initial; margin-left: 10px; paddi=
+ng: 10px 20px 10px 20px; margin-bottom: 20px; clear: both; border-radius: 3=
+px; font-weight: 600; color: #08551e; background: #4ede4ecf; font-size: 16p=
+x; line-height: 25px; width: 225px; display: inline-block; line-height: 21p=
+x; " href=3Dhttps://u11328361.ct.sendgrid.net/ls/click?upn=3Du001.oMbYVuE5R=
+MQJZ1O6utZDLZ9vNpk-2FoHFPgABrm8WK-2BzV0sgyPLufUX63-2FQDYh-2FLOoax3Lbp1EtA-2=
+BI4zvuVSueLp08iKp-2FIOCxrhAYc-2FqFvDZpXWBZBvdGyvEzSPODKBpOkH7sFU5jbBhsn4U4C=
+a1OcpQd-2BHLLXGe-2B6yGtH6eLDZIQSQx925Ox9s8XR8bNbcJFrC3yf35i6OBHHbPka-2BpVq1=
+4ow8yqJIms9-2Fj-2FsqGl8cg-3DcGB2_sCQxchh2gFb81iH-2FHyeiLzgWgRE0U6OZjHjyeNke=
+npXFx5GTygeyvb9wCsTQuIKayajLg9YmxQg3CVosS0Dcm0T9m2kM2xcW8f33JMKg66q5nptsCOR=
+uJTLPlRrgx5jnTodt1qe-2FcHH-2FKakAuMYyql-2FGzTrXtmfkt42GSuecbxSNL1D3jlwjeOwk=
+PeQDVlpIeKPIR-2BPH-2FiEOqryhh418Uw-3D-3D><img src=3D"https://risebirdportal=
+.blob.core.windows.net/icon/available.png" style=3D"width: 21px; margin-rig=
+ht: 10px; margin-left: 25px; float: left; "> Yes! Im Available</a>
+                                                                           =
+ </td>
+                                                                         =20
+                                                                        </t=
+r>
+                                                                        <tr=
+>
+                                                                           =
+ <td align=3D"center" valign=3D"top" style=3D"padding: 10px 0px 0px 0px;">
+                                                                           =
+     <a style=3D"text-decoration: none; background: #65b798; padding: 10px =
+20px; margin-bottom: 20px; text-align: initial; margin-left: 10px; clear: b=
+oth; border-radius: 3px; color: #fff; font-size: 16px; line-height: 25px; w=
+idth: 225px; border-bottom: 2px #6a9b6acf solid; display: inline-block; " h=
+ref=3Dhttps://u11328361.ct.sendgrid.net/ls/click?upn=3Du001.oMbYVuE5RMQJZ1O=
+6utZDLZ9vNpk-2FoHFPgABrm8WK-2BzV0sgyPLufUX63-2FQDYh-2FLOo7tO9sjG6X4-2FQ-2Bj=
+dUkBcqHl6OGKfF6Rp3Jp0BkK099mZmdwZiB-2Fv5B-2BHEkiSEV-2BP4C8bIfZF5MMYh722YVhF=
+8TvU3-2Fd-2FQL1mIxMQij10minfbn-2BBTJQch0htzF5dYkudeNjRhERhGEJpPWbg1qh5J9W2w=
+4P7lcj6ydlAcABq3moRUnCXeTY20w3w83qQHl4c5GiGI_sCQxchh2gFb81iH-2FHyeiLzgWgRE0=
+U6OZjHjyeNkenpXFx5GTygeyvb9wCsTQuIKayajLg9YmxQg3CVosS0Dcm0LB91PUjwZN-2Bsm9u=
+Q0W7z-2Bhto88uADG3mMtt1RLerEe7unCtqdMNhdefbqBEBoOtvoCGjR5rmUmBA-2F-2FUp-2FO=
+LNDG1F4xHnrHeRAvcvQsRGBJsByOi8IZqe0E8DwVCsJrYQ-3D-3D><img style=3D"width: 1=
+8px; margin-right: 10px; margin-left: 40px; float:left;" src=3D"https://ris=
+ebirdportal.blob.core.windows.net/icon/reschedule-icon.png" />Reschedule</a=
+>
+                                                                           =
+ </td>
+                                                                        </t=
+r>
+
+                                                                        <tr=
+>
+                                                                           =
+ <td align=3D"center" valign=3D"top" style=3D"padding:0px;">
+                                                                           =
+     <a style=3D"text-decoration: none; background: #edb39f; padding: 10px =
+20px; margin-bottom: 20px; text-align: initial; margin-left: 10px; clear: b=
+oth; border-radius: 3px; color: #7a1010; font-size: 16px; line-height: 25px=
+; width: 225px; border-bottom: 2px #bc7979 solid; display: inline-block; " =
+href=3Dhttps://u11328361.ct.sendgrid.net/ls/click?upn=3Du001.oMbYVuE5RMQJZ1=
+O6utZDLZ9vNpk-2FoHFPgABrm8WK-2BzV0sgyPLufUX63-2FQDYh-2FLOoax3Lbp1EtA-2BI4zv=
+uVSueLp08iKp-2FIOCxrhAYc-2FqFvDYw7PREubN3sXUpoGxHAqV0DqLOo0hVniuVEDSILGxdip=
+3MKLxbxDisBotR5MW0zAiu02ntzrI2POFaxiMWwqUVv-2BFekIhbSBYo5hkU3A5MTbaiDfhLbPo=
+-2BniGhMAYdhRo-3DhHUE_sCQxchh2gFb81iH-2FHyeiLzgWgRE0U6OZjHjyeNkenpXFx5GTyge=
+yvb9wCsTQuIKayajLg9YmxQg3CVosS0Dcm7hiHE9pTm1dk0gkTPlcWglkXlDtBd6mC1VRijFa7K=
+o4LoFW6u-2FXJrOUp34VNopeCxc4keJI4g8gJVS2RsuEuSGNqTCqfFpFqaRqd7faJRq6gVQZBBE=
+m81s0pqsi5xHj9g-3D-3D><img style=3D"width: 18px; margin-right: 10px; margin=
+-left: 25px; margin-top: 3px; float: left;" src=3D"https://risebirdportal.b=
+lob.core.windows.net/icon/notavailable-icon.png" /> No! I am not Available<=
+/a>
+                                                                           =
+ </td>
+                                                                        </t=
+r>
+                                                                        <tr=
+>
+                                                                           =
+ <td align=3D"center" valign=3D"top" style=3D"padding:0px;"><a style=3D"tex=
+t-decoration: none; background: #74a6a3; border-bottom: 2px #1a6e8b solid; =
+padding: 10px 20px 10px 20px; margin-bottom: 20px; margin-left: 10px; width=
+: 225px; clear: both; border-radius: 3px; color: #fff; font-size: 16px; lin=
+e-height: 25px; text-align: initial; display: inline-block; " href=3Dhttps:=
+//u11328361.ct.sendgrid.net/ls/click?upn=3Du001.oMbYVuE5RMQJZ1O6utZDLZ9vNpk=
+-2FoHFPgABrm8WK-2BzV0sgyPLufUX63-2FQDYh-2FLOoax3Lbp1EtA-2BI4zvuVSueLp08iKp-=
+2FIOCxrhAYc-2FqFvDZgPG-2FOtimsoWUk1XpsuP9g2fcgo23K2DNKP82bx-2B6Zpybz2Bbw-2B=
+fy-2B0kYUTU0l37Jgd6BWEmJ0TA3ufIPXp7bwAze6oPiblq6YPD96zzGTulzlmkoHlfMEeXUVdF=
+4pea4-3D88YJ_sCQxchh2gFb81iH-2FHyeiLzgWgRE0U6OZjHjyeNkenpXFx5GTygeyvb9wCsTQ=
+uIKayajLg9YmxQg3CVosS0Dcm6K3cuu5XH7NG8baH5pcxJF5wjzACCQ3DT9-2F7UKIbGrK6L-2F=
+mL32dnUlGpAFUIKODZsWkWg0TjFkQZ7YriNyi0-2BHTTUw5i5W839aEJY6JLHMJS2YgoYmO-2BN=
+tZ8f39BpUP9A-3D-3D><img style=3D"width: 21px; margin-right: 10px; margin-le=
+ft: 40px; margin-top: 3px; float: left; " src=3D"https://risebirdportal.blo=
+b.core.windows.net/icon/clarity.png" />Need Clarity</a></td>
+
+                                                                        </t=
+r>
+                                                                    </table=
+>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style=
+=3D"padding-top:0px;padding-bottom:0px;font-size:14px;line-height:22px;">
+                                                                    <p>
+                                                                        <im=
+g style=3D"float:left;margin-right:10px;margin-top:5px;" width=3D"15" src=
+=3D"https://risebirdportal.blob.core.windows.net/icon/note.png"><strong sty=
+le=3D" color: #FF6115; font-weight: 600;">Note :</strong> Failure to respon=
+d atleast an hour prior to the scheduled time shall effect an auto-cancella=
+tion of the same.
+                                                                    </p>
+
+                                                              =20
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align=3D"center" valign=3D"top" style=3D"pa=
+dding-bottom: 18px; border-bottom: 3px #ff6115 solid;">
+                                <!-- CENTERING TABLE //-->
+                                <table border=3D"0" cellpadding=3D"30" cell=
+spacing=3D"0" width=3D"100%">
+                                    <tr>
+                                        <td align=3D"center" valign=3D"top"=
+ style=3D"padding-bottom:18px;padding-top:10px;">
+                                            <!-- CONTENT TABLE //-->
+                                            <table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0 " width=3D"100%">
+                                                <tr>
+                                                    <td valign=3D"top" styl=
+e=3D"color: #6B7075; font-family: 'AvenirNextLTPro-Regular', 'Avenir Next',=
+ 'HelveticaNeue', 'Helvetica Neue', 'Avenir', Helvetica; font-size: 16px; b=
+order-top: 1px #ccc solid; padding-top: 15px; text-align: left;">
+                                                        <div style=3D"text-=
+align:left;font-family:'AvenirNextLTPro-Regular','Avenir Next','HelveticaNe=
+ue','Helvetica Neue','Avenir',Helvetica,Arial,sans-serif;font-size:16px;mar=
+gin-bottom:0;margin-top:3px;color:#6B7075;line-height:145%;">
+                                                            Thank you, <br =
+/>
+                                                            <strong> Risebi=
+rd Team</strong>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <table bgcolor=3D"#F0F1F3" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" width=3D"600">
+                        <tr>
+                            <td align=3D"center" valign=3D"top">
+                                <!-- CENTERING TABLE //-->
+                                <table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" width=3D"100%">
+                                    <tr>
+                                        <td align=3D"center" valign=3D"top"=
+ width=3D"600">
+                                            <table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td valign=3D"top" bgco=
+lor=3D"#F0F1F3" style=3D"padding-top:15px;padding-bottom:15px;padding-right=
+:25px;padding-left:25px;font-family:'AvenirNextLTPro-Regular','Avenir Next'=
+,'HelveticaNeue','Helvetica Neue','Avenir',Helvetica,Arial,sans-serif;font-=
+size:13px;color:#6B7075;text-align:center;line-height:120%;">
+                                                        <span style=3D"colo=
+r:#8D9196; -webkit-text-size-adjust: none;  color: #8D9196;
+      text-decoration: none !important"> =A9 2023 Arhat Talent Solutions Pv=
+t Ltd. </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </center>
+<img src=3D"https://u11328361.ct.sendgrid.net/wf/open?upn=3Du001.-2FP-2FINC=
+MaZ1gW6Qwh4R9GTduEe55Fg90sUeUOxdRqOXcbLMbsQ5MrFGUw4Xo5ePP2b-2BqbNtyaZOHEi1z=
+csHKPrhaSL2yDpKyPUYxijJlt8U0zyVSf5Ct-2BzwKW125hS26-2Fl1WGv5Me0y5VuoLwMhxg90=
+Tej1F05tHBug35pJ1BBfHzwPjI-2FqMKLNBlUaiAevs545O8z8SqalfUAtAJs4ojn6mWNUs6kB0=
+b2V7PHD68qvs-3D" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"he=
+ight:1px !important;width:1px !important;border-width:0 !important;margin-t=
+op:0 !important;margin-bottom:0 !important;margin-right:0 !important;margin=
+-left:0 !important;padding-top:0 !important;padding-bottom:0 !important;pad=
+ding-right:0 !important;padding-left:0 !important;"/></body>
+</html>
