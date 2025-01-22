@@ -1,28 +1,16 @@
-Here’s a concise draft for your email:
-
----
-
-**Subject:** Clarification on Additional Script Found During Deployment  
-
-Dear Team,  
-
-During the deployment of the `obBRCsms` package for the `20250106` release on the DEV server, I noticed a discrepancy between the scripts listed in the release wikipage and the actual deployment.  
-
-According to the wikipage, the following scripts were expected:  
-- `func_CitiBR`  
-- `shrun_CitiBRCosmosGLFeed.sh`  
-- `shrun_CitiBRLDWFeed.sh`  
-- `run_CitiBRCollFeed.sh`  
-- `run_UpdateDBStatistics.sh`  
-
-However, after taking changes from the `develop` branch and deploying, an additional script, `run_CitiBRCosmosGLFeedBlocked`, was found, which is not mentioned in the wikipage. Below is the diff output for reference:  
-
-```  
-bash-4.2$ diff -qr 43.38.D0 43.38.C0  
-Files 43.38.D0/share/run_CitiBRCosmosGLFeedBlocked and 43.38.C0/share/run_CitiBRCosmosGLFeedBlocked differ  
-```  
-
-Could you please confirm if this script is intended for this release? If yes, it would be helpful to update the wikipage accordingly.  
-
-Thanks,  
-Rakesh
+752_L_FFS_DBS_EMEA_CP_Send
+752_L_FFS_DBS_EMEA_PP_Send
+752_N_FFS_DBS_EMEA_CP_Send
+752_N_FFS_DBS_EMEA_PP_Send
+752_N_FFS_TGL_CP_Send
+752_N_FFS_TGL_PP_Send
+752_N_FFS_TrdRef_CP_Send_FX
+752_N_FFS_TrdRef_CP_Send_LN
+752_N_FFS_TrdRef_CP_Send_NY
+752_N_FFS_TrdRef_CP_Send_TY
+752_N_FFS_TrdRef_PP_Send_FX
+752_N_FFS_TrdRef_PP_Send_LN
+752_N_FFS_TrdRef_PP_Send_NY
+752_N_FFS_TrdRef_PP_Send_TY
+752_T_FFS_DBS_EMEA_CP_Send
+752_T_FFS_DBS_EMEA_PP_Send
