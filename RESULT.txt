@@ -1,16 +1,33 @@
-752_L_FFS_DBS_EMEA_CP_Send
-752_L_FFS_DBS_EMEA_PP_Send
-752_N_FFS_DBS_EMEA_CP_Send
-752_N_FFS_DBS_EMEA_PP_Send
-752_N_FFS_TGL_CP_Send
-752_N_FFS_TGL_PP_Send
-752_N_FFS_TrdRef_CP_Send_FX
-752_N_FFS_TrdRef_CP_Send_LN
-752_N_FFS_TrdRef_CP_Send_NY
-752_N_FFS_TrdRef_CP_Send_TY
-752_N_FFS_TrdRef_PP_Send_FX
-752_N_FFS_TrdRef_PP_Send_LN
-752_N_FFS_TrdRef_PP_Send_NY
-752_N_FFS_TrdRef_PP_Send_TY
-752_T_FFS_DBS_EMEA_CP_Send
-752_T_FFS_DBS_EMEA_PP_Send
+The issue in `prodn3` server (`sd-734c-50be.nam.nsroot.net`) seems to be the **missing `BabyProfile_T` file**. According to the logs, the script is looking for `/opt/ofbatch/N_ofdata/BabyProfile_T`, but this file doesn't exist. In contrast, in the successful `prodn1` server (`gftsoafinmwap5pn1`), `BabyProfile_T` exists as a symbolic link to `/opt/ofbatch/T_ofdata/BabyProfile_T`.
+
+To resolve the issue on the `prodn3` server:
+
+### 1. Verify the expected `BabyProfile_T` file or symlink:
+- Check if `/opt/ofbatch/T_ofdata/BabyProfile_T` exists on `prodn3`. Run:
+  ```bash
+  ls -ltr /opt/ofbatch/T_ofdata/BabyProfile_T
+  ```
+  If the file exists, create a symbolic link for `BabyProfile_T` in `/opt/ofbatch/N_ofdata`:
+  ```bash
+  ln -s /opt/ofbatch/T_ofdata/BabyProfile_T /opt/ofbatch/N_ofdata/BabyProfile_T
+  ```
+  This will resolve the missing file issue.
+
+### 2. If the target file doesn't exist:
+- If `/opt/ofbatch/T_ofdata/BabyProfile_T` is missing, copy the file from the working `prodn1` server:
+  ```bash
+  scp ofbatch@gftsoafinmwap5pn1:/opt/ofbatch/T_ofdata/BabyProfile_T /opt/ofbatch/T_ofdata/
+  ```
+  Then create the symbolic link as mentioned in step 1.
+
+### 3. Validate the permissions:
+- Ensure that the permissions on `BabyProfile_T` match those on `prodn1`:
+  ```bash
+  chmod 775 /opt/ofbatch/N_ofdata/BabyProfile_T
+  chown ofbatch:oafin /opt/ofbatch/N_ofdata/BabyProfile_T
+  ```
+
+### 4. Test the job:
+- Rerun the job after resolving the issue and verify the logs for any further errors.
+
+By ensuring the symbolic link or the file `BabyProfile_T` exists in the correct location, the script will no longer fail on the `prodn3` server.
