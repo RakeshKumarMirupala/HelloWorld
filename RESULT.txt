@@ -1,33 +1,14 @@
-The issue in `prodn3` server (`sd-734c-50be.nam.nsroot.net`) seems to be the **missing `BabyProfile_T` file**. According to the logs, the script is looking for `/opt/ofbatch/N_ofdata/BabyProfile_T`, but this file doesn't exist. In contrast, in the successful `prodn1` server (`gftsoafinmwap5pn1`), `BabyProfile_T` exists as a symbolic link to `/opt/ofbatch/T_ofdata/BabyProfile_T`.
+**Subject:** Request to Unfreeze Check-in for Jan 20th - 24th Due to Leave Entry Issue  
 
-To resolve the issue on the `prodn3` server:
+Dear [HR Name],  
 
-### 1. Verify the expected `BabyProfile_T` file or symlink:
-- Check if `/opt/ofbatch/T_ofdata/BabyProfile_T` exists on `prodn3`. Run:
-  ```bash
-  ls -ltr /opt/ofbatch/T_ofdata/BabyProfile_T
-  ```
-  If the file exists, create a symbolic link for `BabyProfile_T` in `/opt/ofbatch/N_ofdata`:
-  ```bash
-  ln -s /opt/ofbatch/T_ofdata/BabyProfile_T /opt/ofbatch/N_ofdata/BabyProfile_T
-  ```
-  This will resolve the missing file issue.
+I hope you are doing well.  
 
-### 2. If the target file doesn't exist:
-- If `/opt/ofbatch/T_ofdata/BabyProfile_T` is missing, copy the file from the working `prodn1` server:
-  ```bash
-  scp ofbatch@gftsoafinmwap5pn1:/opt/ofbatch/T_ofdata/BabyProfile_T /opt/ofbatch/T_ofdata/
-  ```
-  Then create the symbolic link as mentioned in step 1.
+I am facing an issue with my check-in system related to my **Comp Off leave on January 17th, 2025**. I had utilized my **Comp Off leave** on that day but mistakenly recorded it as **Work from Home (WFH) request** instead of marking it under the leave category in the check-in timesheet. Due to this inconsistency, the system is preventing the unfreezing of my check-in for the week of **January 20th - 24th**, even after the approval of my unfreeze request.  
 
-### 3. Validate the permissions:
-- Ensure that the permissions on `BabyProfile_T` match those on `prodn1`:
-  ```bash
-  chmod 775 /opt/ofbatch/N_ofdata/BabyProfile_T
-  chown ofbatch:oafin /opt/ofbatch/N_ofdata/BabyProfile_T
-  ```
+Since this is causing a **Loss of Pay (LOP) for January 2025**, I kindly request your assistance in unfreezing my check-in for **January 20th - 24th** so that I can enter my leave details correctly. Please let me know if any further action is required from my end to resolve this issue.  
 
-### 4. Test the job:
-- Rerun the job after resolving the issue and verify the logs for any further errors.
+Looking forward to your support.  
 
-By ensuring the symbolic link or the file `BabyProfile_T` exists in the correct location, the script will no longer fail on the `prodn3` server.
+Best regards,  
+Rakesh Kumar Mirupala
