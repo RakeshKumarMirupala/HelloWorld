@@ -1,14 +1,12 @@
-**Subject:** Request to Unfreeze Check-in for Jan 20th - 24th Due to Leave Entry Issue  
-
-Dear [HR Name],  
-
-I hope you are doing well.  
-
-I am facing an issue with my check-in system related to my **Comp Off leave on January 17th, 2025**. I had utilized my **Comp Off leave** on that day but mistakenly recorded it as **Work from Home (WFH) request** instead of marking it under the leave category in the check-in timesheet. Due to this inconsistency, the system is preventing the unfreezing of my check-in for the week of **January 20th - 24th**, even after the approval of my unfreeze request.  
-
-Since this is causing a **Loss of Pay (LOP) for January 2025**, I kindly request your assistance in unfreezing my check-in for **January 20th - 24th** so that I can enter my leave details correctly. Please let me know if any further action is required from my end to resolve this issue.  
-
-Looking forward to your support.  
-
-Best regards,  
-Rakesh Kumar Mirupala
+Subject: Thank You and Farewell - My Last Day at Virtusa
+Dear All,
+Today marks my last day at Virtusa after 4 wonderful years, and I would like to express my sincere gratitude to everyone who has been part of this journey.
+Working on the Oasys Financial project for Citi has been an enriching experience that has shaped my professional growth tremendously. Each day brought new learning opportunities that prepared me for the unexpected.
+I would like to thank my Virtusa Project Manager, Srirama Evani, and my Line Manager, Shweta, for their guidance and support throughout my tenure.
+Special thanks to the Citi team - Santosh Shukla, Mihir Khanwalker, and Akash Pawar - for their leadership and mentorship. Your expertise and willingness to share knowledge have been invaluable.
+To my wonderful team members - Chandu, Suresh, Srilatha, Laxmi, and Ram - thank you for your collaboration, support, and friendship. It has been a pleasure working with such talented individuals on L3 support and release deployments.
+As they say, "Change is the only constant thing in this universe." While it wasn't an easy decision to move on, I take with me invaluable experiences and memories from our time together.
+I wish you all continued success and hope our paths cross again in the future.
+Thank you for everything!
+Warm regards,
+[Your Name]
